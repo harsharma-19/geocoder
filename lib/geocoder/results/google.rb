@@ -17,6 +17,12 @@ module Geocoder::Result
       end
     end
 
+    def locality
+      if locality = address_components_of_type(:sublocality_level_1).first
+      locality['long_name']
+      end
+    end
+
     def city
       fields = [:locality, :sublocality,
         :administrative_area_level_3,
